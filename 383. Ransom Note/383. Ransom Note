@@ -1,0 +1,18 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+
+        hash_map = {}
+        for letter in ransomNote:
+            if letter in hash_map.keys():
+                hash_map[letter] += 1 
+            else:
+                hash_map[letter] = 1
+        
+        for letter in magazine:
+            if letter in hash_map.keys():
+                hash_map[letter] -= 1
+        
+        for letter in hash_map.keys():
+            if hash_map[letter] > 0:
+                return False
+        return True
